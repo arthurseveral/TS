@@ -21,7 +21,7 @@ AR.AN <- function(T, strategy = c("DIVIDE", "SUBTRACT", "MIXED"), additive.smoot
         
 		for(row in 1:nrow(T)) {
 			for(col in 1:ncol(T)) {
-				output[row, col] <- T[row, col] / mean(T[row,]);
+				output[row, col] <- T[row, col] / (mean(T[row,] + additive.smoothing));
 			}
 		}
         
@@ -45,7 +45,7 @@ AR.AN <- function(T, strategy = c("DIVIDE", "SUBTRACT", "MIXED"), additive.smoot
         
 		for(row in 1:nrow(T)) {
 			for(col in 1:ncol(T)) {
-				T[row, col] <- (T[row, col] - mean(T[row,])) / mean(T[row,]);
+				T[row, col] <- (T[row, col] - mean(T[row,])) / (mean(T[row,] + additive.smoothing));
 			}
 		}
         
